@@ -1,0 +1,19 @@
+{
+  "name": "chat_",
+  "version": "1.0.0",
+  "description": "Reltime chat",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "author": "Anastasiya Nenasheva",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "moment": "^2.29.1",
+    "socket.io": "^4.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
