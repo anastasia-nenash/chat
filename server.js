@@ -5,26 +5,57 @@ const socketio = require('socket.io');
 const formatMessage = require('./utils/messages');
 const {userJoin, getCurrentUser, userLeave} = require('./utils/users');
 const { Console } = require('console');
-
+const mysql = require("mysql2");
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
+  
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  database: "chat",
+  password: "root"
+});
+
+// тестирование подключения
+connection.connect(function(err){
+    if (err) {
+      return console.error("Ошибка: " + err.message);
+    }
+    else{
+      console.log("Подключение к серверу MySQL успешно установлено");
+    }
+ });
+
+ function checkBd(username, password){
+    return new Promise(function(resolve,reject) {
+        // дастаем данные из таблицы
+        connection.execute("SELECT * FROM users",
+            function(err, results) {
+            let users = results; 
+            for (let i = 0; i < users.length; i++){
+                if (username == users[i].login && password == users[i].password) {
+                    resolve();
+                    return;
+                }
+            }
+            reject();
+        });
+    });
+ }
+
+
+
 
 require('socketio-auth')(io, {
-    authenticate: function (socket, data, callback) {
+    authenticate: async function (socket, data, callback) {
         // Пароль и логин, которые пришли.
         var username = data.username;
         var password = data.password;
-
-        if (username === "123") {
-            // Если пользователь существует, то проверяем пароль.
-            return callback(null, "123" == password);
-        }
-        else {
-            // Пользователя не существует.
-            return callback(new Error("User not found"));
-        }
+        await checkBd(username, password)
+            .then(()=>callback(null,true))
+            .catch(()=>callback(new Error("User not found or password not true")));
     }
 });
 

@@ -2,9 +2,7 @@ const users = [];
 
 function userJoin(id,username, password){
     const user = {id, username, password};
-
     users.push(user);
-
     return user;
 }
 
@@ -21,8 +19,6 @@ function userLeave(id){
     }
 
 }
-
-
 
 module.exports = {
     userJoin,
