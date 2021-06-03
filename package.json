@@ -10,9 +10,11 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
+    "libsignal": "^2.0.1",
     "moment": "^2.29.1",
     "mysql2": "^2.2.5",
     "passport.socketio": "^3.7.0",
+    "sha1": "^1.1.1",
     "socket.io": "^4.0.0",
     "socketio-auth": "^0.1.1"
   },

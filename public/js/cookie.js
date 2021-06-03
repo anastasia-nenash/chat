@@ -1,6 +1,6 @@
 /**
-		 * Установка кук.
-		 **/
+	Установка кук.
+**/
  function setCookie(name, value, props) {
     props = props || {}
     var exp = props.expires
@@ -28,4 +28,23 @@ function onJoinButtonClick() {
     setCookie(usernameS,username,{});
     setCookie(passwordS,password,{});
     location.href = '/chat.html';
+}
+
+function onRegistrationButtonClick(){
+    var username = document.getElementById('login').value;
+    var password = document.getElementById('psw').value;
+    var passwordRepeat = document.getElementById('psw-repeat').value;
+    if (password == passwordRepeat) {
+        fetch('http://localhost:3001/addUser', {
+            method: "POST",
+            body: JSON.stringify({
+                username: username,
+                password: password,
+            }),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+    }).then(() => document.getElementById('registration').style.display='none')
+    }
+    
 }

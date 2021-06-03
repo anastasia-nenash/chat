@@ -18,6 +18,7 @@
 		<div class="join-container">
 			<header class="join-header">
 				<h1>Chat</h1>
+				
 			</header>
 			<main class="join-main">
 				<form>
@@ -47,7 +48,34 @@
 						</select> -->
 					</div>
 					<button type="button" class="btn" onclick="onJoinButtonClick()">Join Chat</button>
+					<button onclick="document.getElementById('registration').style.display='block'" class="signup">Sign Up</button>
 				</form>
 			</main>
 		</div>
+		<div id="registration" class="modal">
+			<span onclick="document.getElementById('registration').style.display='none'" class="close" title="Close Modal">×</span>
+			<form class="modal-content" action="/action_page.php">
+			  <div class="container">
+				<header class="join-header">
+					<h1>Sign Up</h1>
+					<p>Please fill in this form to create an account.</p>
+				</header>
+				<hr>
+				<label for="email"><b>Login</b></label>
+				<input type="text" placeholder="Enter Email" id="login" required>
+		  
+				<label for="psw"><b>Password</b></label>
+				<input type="text" placeholder="Enter Password" id="psw" required>
+		  
+				<label for="psw-repeat"><b>Repeat Password</b></label>
+				<input type="text" placeholder="Repeat Password" id="psw-repeat" required>
+		  
+				<div class="clearfix">
+				  <button type="button" onclick="document.getElementById('registration').style.display='none'" class="cancelbtn">Cancel</button>
+				  <button type="button" class="signup" onclick="onRegistrationButtonClick()">Sign up</button>
+				</div>
+			  </div>
+			</form>
+		  </div>
+		  
 	</body>

@@ -1,10 +1,12 @@
 const users = [];
 
+
 function userJoin(id,username, password){
     const user = {id, username, password};
     users.push(user);
     return user;
 }
+
 
 function getCurrentUser(id){
     return users.find(user => user.id === id);
@@ -20,8 +22,11 @@ function userLeave(id){
 
 }
 
+const findByUsername = username => users.find(user => user.username === username);
+
 module.exports = {
     userJoin,
     getCurrentUser,
-    userLeave
+    userLeave,
+    findByUsername
 };

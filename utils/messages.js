@@ -9,3 +9,4 @@ function formatMessage(username, text){
 }
 
 module.exports = formatMessage;
+module.exports = moment;
