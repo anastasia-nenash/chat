@@ -142,7 +142,15 @@
     function outputMsg(username, message) {
         const div = document.createElement('div');
         div.classList.add('message');
-        div.innerHTML = `<p class = "meta">${username} 
+        var date = new Date();
+        var hours = date.getHours();
+        var min = date.getMinutes();
+        var format = 'PM';
+        if (hours > 12){
+            format = 'AM';
+            hours = hours - 12;
+        }
+        div.innerHTML = `<p class = "meta">${username} <span>${hours}:${min} ${format}</span></p>
         <p class="text">${message}</p>`;
         document.querySelector('.chat-messages').appendChild(div);
     }
