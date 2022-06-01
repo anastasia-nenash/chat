@@ -1,6 +1,6 @@
 /**
-	Установка кук.
-**/
+ * Установка cookie.
+ */
  function setCookie(name, value, props) {
     props = props || {}
     var exp = props.expires
@@ -20,16 +20,25 @@
     document.cookie = updatedCookie
 }
 
+/**
+ * Нажатие на кнопку "Присоединиться к чату".
+ */
 function onJoinButtonClick() {
     var usernameS = 'username';
     var passwordS = 'password';
+    var roomS = 'room';
     var username = document.getElementById(usernameS).value;
     var password = document.getElementById(passwordS).value;
+    var room = document.getElementById(roomS).value;
     setCookie(usernameS,username,{});
     setCookie(passwordS,password,{});
+    setCookie(roomS, room, {});
     location.href = '/chat.html';
 }
 
+/**
+ * Нажатие на кнопку "Регистрация".
+ */
 function onRegistrationButtonClick(){
     var username = document.getElementById('login').value;
     var password = document.getElementById('psw').value;
@@ -45,6 +54,5 @@ function onRegistrationButtonClick(){
                 'Content-Type': 'application/json'
             }
     }).then(() => document.getElementById('registration').style.display='none')
-    }
-    
+    } 
 }

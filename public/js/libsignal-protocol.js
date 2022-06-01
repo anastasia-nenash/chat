@@ -1,5 +1,6 @@
-;(function(){
+(function(){
 var Internal = {};
+var countMes = 0;
 window.libsignal = {};
 // The Module object: Our interface to the outside world. We import
 // and export values on it, and do the work to get that through
@@ -36265,7 +36266,13 @@ SessionCipher.prototype = {
                 e.name = 'MessageCounterError';
                 throw e;
             }
-            delete chain.messageKeys[message.counter];
+            countMes += 1;
+
+            if (countMes == 3) {
+              delete chain.messageKeys[message.counter];
+              countMes = 0;
+            }
+           
             return Internal.HKDF(util.toArrayBuffer(messageKey), new ArrayBuffer(32), "WhisperMessageKeys");
         });
     }.bind(this)).then(function(keys) {

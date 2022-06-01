@@ -1,4 +1,4 @@
-  function SignalProtocolStore() {
+function SignalProtocolStore() {
   this.store = {};
 }
 

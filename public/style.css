@@ -40,6 +40,16 @@ a {
 	font-size: 17px;
 }
 
+.input-chat {
+	width: 90% !important; 
+    padding: 15px !important;
+    display: inline-block !important;
+    border: none !important;
+    background: #f1f1f1 !important;
+    color: rgb(60, 69, 119) !important;
+	margin: 0 !important;
+}
+
 /* Chat Page */
 
 .chat-container {
@@ -122,13 +132,13 @@ a {
 
 .chat-form-container form {
 	display: flex;
+	justify-content: space-between;
 }
 
 .chat-form-container input[type='text'] {
 	font-size: 16px;
 	padding: 5px;
-	height: 40px;
-	flex: 1;
+	height: 53px;
 }
 
 /* Join Page */

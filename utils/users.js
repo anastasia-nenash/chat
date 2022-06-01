@@ -1,8 +1,8 @@
 const users = [];
 
 
-function userJoin(id,username, password){
-    const user = {id, username, password};
+function userJoin(id,username, password, room){
+    const user = {id, username, password, room};
     users.push(user);
     return user;
 }
@@ -22,11 +22,16 @@ function userLeave(id){
 
 }
 
+function getRoomUsers(room) {
+    return users.filter(user => user.room === room);
+}
+
 const findByUsername = username => users.find(user => user.username === username);
 
 module.exports = {
     userJoin,
     getCurrentUser,
     userLeave,
-    findByUsername
+    findByUsername,
+    getRoomUsers
 };
