@@ -81,7 +81,7 @@ function shuffle(array) {
     return array;
 }
 
-FastMQ.Client.connect('secondServerChannel', 7500, "localhost")
+FastMQ.Client.connect('secondServerChannel', 7500, process.env.FASTMQ_HOST || "localhost")
     .then((channel) => {
         app.post('/message', async (req, res) => {
             const buffers = []; // буфер для получаемых данных

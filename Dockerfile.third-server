@@ -1,0 +1,10 @@
+FROM node:16-bullseye
+
+RUN mkdir -p /opt/third-server
+COPY third-server.js /opt/third-server/
+COPY package.json /opt/third-server/
+
+RUN cd /opt/third-server && npm install
+
+CMD ["node", "/opt/third-server/third-server.js"]
+EXPOSE 3003

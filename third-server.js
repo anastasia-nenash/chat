@@ -80,7 +80,7 @@ function shuffle(array) {
     return array;
 }
 
-FastMQ.Client.connect('thirdServerChannel', 7500, 'localhost')
+FastMQ.Client.connect('thirdServerChannel', 7500, process.env.FASTMQ_HOST || "localhost")
     .then((channel) => {
         channel.response('getMessageFromSecondServer', async (msq, res) => {
             var responseFromSecondServer = msq.payload.data;

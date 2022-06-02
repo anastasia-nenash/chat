@@ -1,0 +1,10 @@
+FROM node:16-bullseye
+
+RUN mkdir -p /opt/message-broker
+COPY message-broker/fastmq-server.js /opt/message-broker/
+COPY package.json /opt/message-broker/
+
+RUN cd /opt/message-broker && npm install 
+
+CMD ["node", "/opt/message-broker/fastmq-server.js"]
+EXPOSE 7500

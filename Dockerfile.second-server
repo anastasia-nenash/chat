@@ -1,0 +1,10 @@
+FROM node:16-bullseye
+
+RUN mkdir -p /opt/second-server
+COPY second-server.js /opt/second-server/
+COPY package.json /opt/second-server/
+
+RUN cd /opt/second-server && npm install
+
+CMD ["node", "/opt/second-server/second-server.js"]
+EXPOSE 3002
